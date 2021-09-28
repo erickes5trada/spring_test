@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}">Insert title here</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Punto de venta</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/listar}">Usuarios</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<h1 class="text-secondary border-success border-5 border-bottom" th:text="${titulo}"></h1>
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+		<p><a class="btn btn-success btn-xs" th:href="@{/form}">Crear Usuario</a></p>
+			<table class="table table-striped table-bordered table-sm table-responsive">
+				<thead class="table-dark">
+					<tr>
+						<th>ID</th>
+						<th>NOMBRE</th>
+						<th>APELLIDO_PATERNO</th>
+						<th>APELLIDO_MATERNO</th>
+						<th>TELEFONO</th>
+						<th>DIRECCION</th>
+						<th>EMAIL</th>
+						<th>USUARIO</th>
+						<th>CONSTRASEÑA</th>
+						<th>ACTIVO</th>
+						<th>FECHA DE CREACIÓN</th>
+						<th>OPERACIONES</th>
+			
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="usuario: ${usuarios}">
+						<td th:text="${usuario.id}"></td>
+						<td th:text="${usuario.nombre}"></td>
+						<td th:text="${usuario.apat}"></td>
+						<td th:text="${usuario.amat}"></td>
+						<td th:text="${usuario.tel}"></td>
+						<td th:text="${usuario.direccion}"></td>
+						<td th:text="${usuario.email}"></td>
+						<td th:text="${usuario.usuario}"></td>
+						<td th:text="${usuario.contrasenia}"></td>
+						<td th:text="${usuario.activo}"></td>
+						<td th:text="${usuario.createAt}"></td>	
+						<td><a class=" btn btn-warning btn-xs mr-2 mt-2" th:href="@{/form/}+ ${usuario.id}" ><i class="fas fa-edit"></i></a>
+						<a class=" btn btn-danger btn-xs mt-2" th:onclick="eliminar([[${usuario.id}]])"><i class="fas fa-trash"></i></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://kit.fontawesome.com/c5038aeb72.js" crossorigin="anonymous"></script>
+<script src="funciones.js"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>

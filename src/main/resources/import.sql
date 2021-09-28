@@ -1,0 +1,2 @@
+INSERT INTO usuarios (id,NOMBRE,APAT,AMAT,TELEFONO,DIRECCION,EMAIL,USUARIO,CONTRASEÑA,ACTIVO,CREATE_AT) VALUES (1,'Karla Elvira','Enriquez','Francisco','5539229703','San Felipe de Jesus','karlaeef@gmail.com','karlaEF','1234','si','2021-01-11');
+INSERT INTO usuarios (id,NOMBRE,APAT,AMAT,TELEFONO,DIRECCION,EMAIL,USUARIO,CONTRASEÑA,ACTIVO,CREATE_AT) VALUES (2,'Erick','Estrada','Senado','5589797334','Valle de Mitla','erick.e.sneado@gmail.com','Eri123','1234','no','2021-01-11');

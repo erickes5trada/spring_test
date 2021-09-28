@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text=${titulo}>Insert title here</title>
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+	crossorigin="anonymous">
+
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Punto de venta</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNav"
+				aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" th:href="@{/}">Home</a></li>
+					<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Usuarios</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+
+
+	<h1 th:text="${titulo}"
+		class="text-secondary border-warning border-5 border-bottom"></h1>
+
+	<div class="container" style="border:#414141 3px solid">
+
+<br>
+		<form th:action="@{/form}" th:object="${usuario}" method="post" class="row g-3">
+	
+				<div class="col-md-4">
+				<label class="col-auto form-label" for="nombre">NOMBRE</label>
+					<input type="text" th:field="*{nombre}" class="form-control"  id="nombre" th:errorclass="'form-control alert-danger'" />
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+				</div>
+				
+				<div class="col-md-4">
+				<label class="col-auto form-label" for="apat">APELLIDO PATERNO</label>
+					<input type="text" th:field="*{apat}" class="form-control"  id="apat" th:errorclass="'form-control alert-danger'"/>
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('apat')}" th:errors="*{apat}"></small>
+				</div>
+				
+				<div class="col-md-4">
+				<label class="col-auto form-label" for="amat">APELLIDO MATERNO</label>
+					<input type="text" th:field="*{amat}" class="form-control" id="amat" th:errorclass="'form-control alert-danger'" />
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('amat')}" th:errors="*{amat}"></small>
+				</div>
+				
+			<br>
+		
+			
+			<fieldset >
+				<legend >
+				DATOS DE CONTACTO
+				</legend>
+				
+				<div class="row">
+				
+				
+				<div class="col-md-6">
+				<label class="col-auto form-label" for="tel">TELÉFONO</label>
+
+					<input type="text" th:field="*{tel}" class="form-control" id="tel" th:errorclass="'form-control alert-danger'"/>
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}"></small>
+
+				</div>
+				
+				
+				<div class="col-md-6">
+				<label class="col-auto form-label" for="email">EMAIL</label>
+	
+					<input type="text" th:field="*{email}" class="form-control" id="email" th:errorclass="'form-control alert-danger'" />
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+			
+				</div>
+			    
+				<div class="col-md-12">
+					<label class="col-auto form-label" for="direccion">DIRECCIÓN</label>
+	
+					<input type="text" th:field="*{direccion}" class="form-control" id="direccion" th:errorclass="'form-control alert-danger'" />
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></small>
+	
+				
+				</div>
+
+				</div>
+				
+
+			</fieldset>
+	
+			<br>
+			<br>
+			
+			<div class="col-md-6">
+					<label class="col-auto form-label" for="user">USUARIO</label>
+	
+					<input type="text" th:field="*{usuario}" class="form-control" id="user" th:errorclass="'form-control alert-danger'" />
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}"></small>
+			
+			</div>
+
+			<div class="col-md-6">
+					<label class="col-auto form-label" for="passw">CONTRASEÑA</label>
+
+					<input type="text" th:field="*{contrasenia}" class="form-control" id="passw" th:errorclass="'form-control alert-danger'" />
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('contrasenia')}" th:errors="*{contrasenia}"></small>
+				
+			</div>
+	
+
+			<div class="col-md-6">
+					<label class="col-auto form-label">ACTIVO</label>
+	
+					<select name="activo" th:field="*{activo}" class="form-select" th:errorclass="'form-control alert-danger'">
+						<option value="si">Si</option>
+						<option value="no">No</option>
+					</select>
+					<small class="form-text text-danger" th:if="${#fields.hasErrors('activo')}" th:errors="*{activo}"></small>
+			</div>
+	
+
+			<div class="col-md-6">
+					<label class="col-auto form-label" for="date">FECHA</label>
+						
+							<input type="date" th:field="*{createAt}" class="form-control" id="date" />
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
+					
+			</div>
+
+			<div class="col-sm-6" style="margin-bottom:10px">
+				<input class="btn btn-lg btn-warning" th:onclick="ok()" type="submit" value="Crear Usuario" />
+			</div>
+
+
+	<input type="hidden" th:field="*{id}" />
+
+	</form>
+	</div>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="funciones.js"></script>
+</body>
+
+<!-- JavaScript Bundle with Popper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+	crossorigin="anonymous"></script>
+</html>
